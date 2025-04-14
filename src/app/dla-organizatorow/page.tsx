@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { MainHeader } from "@/components/main-header"
-import { SectionWrapper } from "@/components/section-wrapper"
-import { FeatureSection } from "@/components/feature-section"
-import { CTAButton } from "@/components/cta-button"
-import { Footer } from "@/components/footer"
-import { Calendar, Users, Bell, Settings, Star } from "lucide-react"
+import Image from "next/image";
+import { MainHeader } from "@/components/main-header";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { FeatureSection } from "@/components/feature-section";
+import { Footer } from "@/components/footer";
+import { Calendar, Users, Bell, Settings, Star } from "lucide-react";
+import { RippleButton } from "@/components/ripple-button";
 
 export default function OrganizersPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Custom fonts */}
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-        
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
         @font-face {
-          font-family: 'Boldonse';
-          src: url('/fonts/boldonse.woff2') format('woff2');
+          font-family: "Boldonse";
+          src: url("/fonts/boldonse.woff2") format("woff2");
           font-weight: normal;
           font-style: normal;
         }
-        
+
         .font-boldonse {
-          font-family: 'Boldonse', sans-serif;
+          font-family: "Boldonse", sans-serif;
         }
-        
+
         body {
-          font-family: 'Roboto', sans-serif;
-          color: #06010D;
+          font-family: "Roboto", sans-serif;
+          color: #06010d;
         }
       `}</style>
 
@@ -44,13 +44,17 @@ export default function OrganizersPage() {
                   Zorganizuj turniej łatwiej niż kiedykolwiek
                 </h1>
                 <p className="max-w-[600px] text-[#06010D]/80 md:text-xl mb-8">
-                  Narzędzia, które pozwolą Ci skupić się na grze, nie papierkowej robocie.
+                  Narzędzia, które pozwolą Ci skupić się na grze, nie
+                  papierkowej robocie.
                 </p>
               </div>
               <div>
-                <CTAButton size="lg" onClick={() => alert("Dodaj swój pierwszy turniej")}>
+                <RippleButton
+                  size="lg"
+                  onClick={() => alert("Dodaj swój pierwszy turniej")}
+                >
                   Dodaj swój pierwszy turniej
-                </CTAButton>
+                </RippleButton>
               </div>
             </div>
             <div className="flex items-center justify-center">
@@ -72,8 +76,9 @@ export default function OrganizersPage() {
               Panel organizatora
             </h2>
             <p className="max-w-3xl mx-auto text-[#06010D]/80 md:text-lg">
-              Zarządzaj zgłoszeniami, terminarzem, drużynami i komunikacją z jednego miejsca. Intuicyjny i elastyczny
-              system, który działa na każdym urządzeniu.
+              Zarządzaj zgłoszeniami, terminarzem, drużynami i komunikacją z
+              jednego miejsca. Intuicyjny i elastyczny system, który działa na
+              każdym urządzeniu.
             </p>
           </div>
 
@@ -81,8 +86,12 @@ export default function OrganizersPage() {
             <div className="bg-white p-6 rounded-2xl shadow-md">
               <div className="bg-[#06010D]/5 h-[300px] rounded-xl flex items-center justify-center">
                 <div className="text-center">
-                  <div className="font-bold text-lg mb-2">Panel administratora</div>
-                  <div className="text-sm text-[#06010D]/60">Podgląd interfejsu</div>
+                  <div className="font-bold text-lg mb-2">
+                    Panel administratora
+                  </div>
+                  <div className="text-sm text-[#06010D]/60">
+                    Podgląd interfejsu
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,7 +104,8 @@ export default function OrganizersPage() {
                 <div>
                   <h3 className="font-bold text-lg mb-1">Terminarz</h3>
                   <p className="text-[#06010D]/70">
-                    Planuj mecze, przydzielaj boiska i zarządzaj harmonogramem całego turnieju.
+                    Planuj mecze, przydzielaj boiska i zarządzaj harmonogramem
+                    całego turnieju.
                   </p>
                 </div>
               </div>
@@ -107,7 +117,8 @@ export default function OrganizersPage() {
                 <div>
                   <h3 className="font-bold text-lg mb-1">Lista drużyn</h3>
                   <p className="text-[#06010D]/70">
-                    Przeglądaj zgłoszenia, akceptuj drużyny i zarządzaj listą uczestników.
+                    Przeglądaj zgłoszenia, akceptuj drużyny i zarządzaj listą
+                    uczestników.
                   </p>
                 </div>
               </div>
@@ -119,7 +130,8 @@ export default function OrganizersPage() {
                 <div>
                   <h3 className="font-bold text-lg mb-1">Powiadomienia</h3>
                   <p className="text-[#06010D]/70">
-                    Wysyłaj komunikaty do wszystkich uczestników lub wybranych drużyn.
+                    Wysyłaj komunikaty do wszystkich uczestników lub wybranych
+                    drużyn.
                   </p>
                 </div>
               </div>
@@ -130,7 +142,10 @@ export default function OrganizersPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-1">Ustawienia</h3>
-                  <p className="text-[#06010D]/70">Dostosuj format turnieju, zasady i wymagania dla uczestników.</p>
+                  <p className="text-[#06010D]/70">
+                    Dostosuj format turnieju, zasady i wymagania dla
+                    uczestników.
+                  </p>
                 </div>
               </div>
             </div>
@@ -170,8 +185,8 @@ export default function OrganizersPage() {
               Zbieraj opinie i buduj reputację
             </h2>
             <p className="max-w-3xl mx-auto text-[#06010D]/80 md:text-lg">
-              Po każdym turnieju uczestnicy mogą wystawić Ci ocenę. Pozytywne recenzje zwiększają zaufanie i przyciągają
-              więcej drużyn.
+              Po każdym turnieju uczestnicy mogą wystawić Ci ocenę. Pozytywne
+              recenzje zwiększają zaufanie i przyciągają więcej drużyn.
             </p>
           </div>
 
@@ -192,7 +207,8 @@ export default function OrganizersPage() {
                 <Star className="h-5 w-5 fill-current" />
               </div>
               <p className="text-[#06010D]/80">
-                "Świetna organizacja, wszystko na czas, dobra komunikacja. Polecam każdemu!"
+                "Świetna organizacja, wszystko na czas, dobra komunikacja.
+                Polecam każdemu!"
               </p>
             </div>
 
@@ -212,7 +228,8 @@ export default function OrganizersPage() {
                 <Star className="h-5 w-5" />
               </div>
               <p className="text-[#06010D]/80">
-                "Profesjonalne podejście do organizacji. Turniej przebiegł sprawnie i bez opóźnień."
+                "Profesjonalne podejście do organizacji. Turniej przebiegł
+                sprawnie i bez opóźnień."
               </p>
             </div>
 
@@ -232,20 +249,25 @@ export default function OrganizersPage() {
                 <Star className="h-5 w-5 fill-current" />
               </div>
               <p className="text-[#06010D]/80">
-                "Najlepszy turniej w jakim brałem udział. Świetna atmosfera i organizacja na wysokim poziomie."
+                "Najlepszy turniej w jakim brałem udział. Świetna atmosfera i
+                organizacja na wysokim poziomie."
               </p>
             </div>
           </div>
 
           <div className="text-center mt-8">
-            <CTAButton onClick={() => alert("Sprawdź jak wyglądają profile organizatorów")}>
+            <RippleButton
+              onClick={() =>
+                alert("Sprawdź jak wyglądają profile organizatorów")
+              }
+            >
               Sprawdź jak wyglądają profile organizatorów
-            </CTAButton>
+            </RippleButton>
           </div>
         </SectionWrapper>
       </main>
 
       <Footer />
     </div>
-  )
+  );
 }

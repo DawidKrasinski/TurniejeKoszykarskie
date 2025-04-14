@@ -1,23 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { RippleButton } from "./ripple-button"
-import { User, LogOut } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { RippleButton } from "./ripple-button";
+import { User, LogOut } from "lucide-react";
 
 interface HeaderProps {
-  activePage?: string
+  activePage?: string;
 }
 
 export function Header({ activePage }: HeaderProps) {
-  // This would normally come from an auth context or similar
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  const toggleLoggedIn = () => {
-    setIsLoggedIn(!isLoggedIn)
-  }
-
-  const menuItems = ["Turnieje", "Dla Zawodników", "Dla Organizatorów", "Kontakt"]
+  const menuItems = [
+    "Dla Zawodników",
+    "Dla Organizatorów",
+    "Turnieje",
+    "Kontakt",
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
@@ -25,7 +23,9 @@ export function Header({ activePage }: HeaderProps) {
         {/* Logo centered */}
         <div className="flex-1 flex justify-center">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-boldonse text-xl font-bold tracking-tight md:text-2xl">TurniejeKoszykarskie.pl</span>
+            <span className="font-boldonse text-xl font-bold tracking-tight md:text-2xl">
+              TurniejeKoszykarskie.pl
+            </span>
           </Link>
         </div>
 
@@ -35,9 +35,15 @@ export function Header({ activePage }: HeaderProps) {
             {menuItems.map((item) => (
               <Link
                 key={item}
-                href={item === "Turnieje" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                href={
+                  item === "Turnieje"
+                    ? "/"
+                    : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                }
                 className={`text-sm font-medium transition-colors px-5 ${
-                  activePage === item ? "text-[#F27507]" : "text-[#06010D] hover:text-[#F27507]"
+                  activePage === item
+                    ? "text-[#F27507]"
+                    : "text-[#06010D] hover:text-[#F27507]"
                 }`}
               >
                 {item}
@@ -45,52 +51,23 @@ export function Header({ activePage }: HeaderProps) {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-5">
-            {isLoggedIn ? (
-              <>
-                {/* User menu button (replaces login button when logged in) */}
-                <RippleButton
-                  variant="outline"
-                  className="border-[#F27507]/20 hover:bg-[#F27507]/20 text-[#06010D] hover:text-[#06010D] font-medium"
-                  onClick={() => alert("Menu użytkownika")}
-                >
-                  <User className="mr-2 h-4 w-4" />
-                  Moje konto
-                </RippleButton>
+            {/* Login button (visible when not logged in) */}
+            <Link href="/logowanie">
+              <RippleButton
+                variant="outline"
+                className="border-[#F27507]/20 hover:bg-[#F27507]/20 text-[#06010D] hover:text-[#06010D] font-medium"
+              >
+                Zaloguj się
+              </RippleButton>
+            </Link>
 
-                {/* Logout button */}
-                <RippleButton
-                  variant="outline"
-                  className="border-[#F27507]/20 hover:bg-[#F27507]/20 text-[#06010D] hover:text-[#06010D]"
-                  onClick={toggleLoggedIn}
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Wyloguj
-                </RippleButton>
-              </>
-            ) : (
-              <>
-                {/* Login button (visible when not logged in) */}
-                <Link href="/logowanie">
-                  <RippleButton
-                    variant="outline"
-                    className="border-[#F27507]/20 hover:bg-[#F27507]/20 text-[#06010D] hover:text-[#06010D] font-medium"
-                  >
-                    Zaloguj się
-                  </RippleButton>
-                </Link>
-
-                {/* Register button (visible when not logged in) */}
-                <Link href="/rejestracja">
-                  <RippleButton
-                    className="bg-[#F27507] hover:bg-[#F27507]/90 text-white"
-                    onClick={toggleLoggedIn} // For demo purposes
-                  >
-                    <User className="mr-2 h-4 w-4" />
-                    Załóż konto
-                  </RippleButton>
-                </Link>
-              </>
-            )}
+            {/* Register button (visible when not logged in) */}
+            <Link href="/rejestracja">
+              <RippleButton className="bg-[#F27507] hover:bg-[#F27507]/90 text-white">
+                <User className="mr-2 h-4 w-4" />
+                Załóż konto
+              </RippleButton>
+            </Link>
           </div>
 
           {/* Mobile user menu button */}
@@ -106,5 +83,5 @@ export function Header({ activePage }: HeaderProps) {
         </div>
       </div>
     </header>
-  )
+  );
 }

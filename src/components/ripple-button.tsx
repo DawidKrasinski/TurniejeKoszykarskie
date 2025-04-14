@@ -1,36 +1,32 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { forwardRef, type ButtonHTMLAttributes } from "react"
-import { Button } from "@/components/ui/button"
-import { useRipple } from "@/hooks/use-ripple"
-import { cn } from "@/lib/utils"
+import { forwardRef, type ButtonHTMLAttributes } from "react";
+import { Button } from "@/components/ui/button";
+import { useRipple } from "@/hooks/use-ripple";
+import { cn } from "@/lib/utils";
 
 interface RippleButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
-  size?: "default" | "sm" | "lg" | "icon"
-  className?: string
-  isLoggedIn?: boolean
+  variant?: "default" | "outline" | "secondary" | "ghost";
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
 }
 
 export const RippleButton = forwardRef<HTMLButtonElement, RippleButtonProps>(
-  ({ children, className, onClick, variant = "default", isLoggedIn = true, ...props }, ref) => {
-    const { ripples, createRipple, rippleStyles } = useRipple()
+  ({ children, className, onClick, variant = "default", ...props }, ref) => {
+    const { ripples, createRipple, rippleStyles } = useRipple();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      createRipple(event)
-      onClick?.(event)
-    }
+      createRipple(event);
+      onClick?.(event);
+    };
 
     // Determine ripple color based on variant
     const getRippleColor = () => {
-      if (variant === "default") return "bg-white/30" // For primary buttons
-      return "bg-[#F27507]/30" // For other variants
-    }
-
-    // Only render the button if user is logged in
-    if (!isLoggedIn) return null
+      if (variant === "default") return "bg-white/30"; // For primary buttons
+      return "bg-[#F27507]/30"; // For other variants
+    };
 
     return (
       <Button
@@ -49,8 +45,8 @@ export const RippleButton = forwardRef<HTMLButtonElement, RippleButtonProps>(
         ))}
         {children}
       </Button>
-    )
-  },
-)
+    );
+  }
+);
 
-RippleButton.displayName = "RippleButton"
+RippleButton.displayName = "RippleButton";
